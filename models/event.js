@@ -1,7 +1,17 @@
 module.exports = function(sequelize, DataTypes) {
   var Event = sequelize.define("Event", {
-    title: DataTypes.STRING,
-    type: DataTypes.STRING,
+    title: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        validate: {
+          len: [1]
+        }
+    },
+    category: {
+        type: DataTypes.STRING,
+        defaultValue: "meetup"
+    },
+    location: DataTypes.STRING,
     startdate: {
         type: DataTypes.DATE
     },
