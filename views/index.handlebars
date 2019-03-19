@@ -1,0 +1,62 @@
+<div class="jumbotron">
+  <h1 class="display-3" class="text-center">Eat-da-Hamberders!</h1>
+  <!--
+    <p class="lead">Jumbo helper text</p>
+    <hr class="my-2">
+    <p>More info</p>
+    <p class="lead">
+      <a class="btn btn-primary btn-lg" href="Jumbo action link" role="button">Jumbo action name</a>
+    </p>
+  -->
+</div>
+
+<h1 class="text-center"></h1>
+
+<main>
+  <div class="container">
+    <div class="row">
+      <div class="col s6">
+        {{#each burgers}}
+          {{#unless this.devoured}}
+            <div>
+              <form action="/burgers/{{this.id}}?_method=PUT" method="POST">
+                <button type="submit" class='burgerAvailable'> {{this.burger_name}}</button>
+              </form>
+            </div>
+          {{/unless}}
+        {{/each}}
+      </div>
+
+      <div class="col s6">
+        {{#each burgers}}
+          {{#if this.devoured}}
+            <div class='burgerEaten'>
+              <div>
+                {{this.burger_name}}
+              </div>
+            </div>
+          {{/if}}
+        {{/each}}
+      </div>
+    </div>
+  </div>
+</main>
+
+<div>
+  <div class="card col-4">
+    <div class="card-body">
+
+      <h2 class="card-title text-center">Create A Burger</h2>
+
+      <div>
+        <div class="text-center">
+          <form action="/burgers" method="POST">
+            <input type="text" id="name" name="burger_name" placeholder="New Burger">
+            <button type="submit" class="addBurgerButton">Add The Burger</button>
+          </form>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
