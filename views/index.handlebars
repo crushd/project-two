@@ -3,7 +3,7 @@
     <div class="row">
       <div class="col-8 offset-2">
         <h1>{{msg}}</h1>
-        <h2>Create Event</h2>
+        <!--<h2>Get Started by Creating an Event</h2>-->
         <form class="clearfix mb-4" action="POST">
           <div class="form-group">
             <label for="event-name">Event Name</label>
@@ -42,12 +42,12 @@
           </div>
           <button id="submit" class="btn btn-primary float-right">Add Event</button>
         </form>
-        <h3>Examples:</h3>
+        <h3>Events:</h3>
         <ul id="event-list" class="list-group">
           {{#each events}}
           <li data-id="{{this.id}}" class="list-group-item">
             <a href="event/{{this.id}}">{{this.text}}</a>
-            <button class="btn btn-danger float-right delete">ｘ</button>
+            <button class="btn btn-danger float-right delete"> x</button>
           </li>
           {{/each}}
         </ul>
@@ -55,6 +55,9 @@
     </div>
   </div>
 </div>
+
+
+<div class="text-center pt-3"><a href="api/events/">API Events</a> | <a href="api/users/">API Users</a></div>
 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="/js/index.js"></script>

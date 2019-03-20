@@ -38,22 +38,29 @@ var API = {
 // refreshExamples gets new examples from the db and repopulates the list
 var refreshEvents = function() {
   API.getEvents().then(function(data) {
-    var $events = data.map(function(example) {
+    
+    console.log("Refreshing events...");
+
+    var $events = data.map(function(thisEvent) {
       var $a = $("<a>")
-        .text(event.eventName)
-        .attr("href", "/event/" + event.id);
+        .text(thisEvent.title)
+        .attr("href", "/event/" + thisEvent.id);
 
       var $li = $("<li>")
         .attr({
           class: "list-group-item",
-          "data-id": event.id
+          "data-id": thisEvent.id
         })
         .append($a);
 
       var $button = $("<button>")
         .addClass("btn btn-danger float-right delete")
-        .text("ｘ");
+        .text(" Delete");
 
+      var $trashcan = $("<i>")
+        .addClass("fas fa-trash-alt");
+
+      $button.prepend($trashcan);  
       $li.append($button);
 
       return $li;
@@ -108,6 +115,10 @@ var handleDeleteBtnClick = function() {
   });
 };
 
+
+
 // Add event listeners to the submit and delete buttons
 $submitBtn.on("click", handleFormSubmit);
 $eventList.on("click", ".delete", handleDeleteBtnClick);
+
+refreshEvents();
