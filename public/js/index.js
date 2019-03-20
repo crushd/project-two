@@ -40,8 +40,8 @@ var refreshEvents = function() {
   API.getEvents().then(function(data) {
     var $events = data.map(function(example) {
       var $a = $("<a>")
-        .text(event.text)
-        .attr("href", "/event/" + example.id);
+        .text(event.eventName)
+        .attr("href", "/event/" + event.id);
 
       var $li = $("<li>")
         .attr({
@@ -69,7 +69,7 @@ var refreshEvents = function() {
 var handleFormSubmit = function(event) {
   event.preventDefault();
 
-  var event = {
+  var thisEvent = {
     title: $eventName.val().trim(),
     startdate: $eventStartDate.val().trim(),
     enddate: $eventEndDate.val().trim(),
@@ -79,12 +79,12 @@ var handleFormSubmit = function(event) {
     description: $eventDescription.val().trim()
   };
 
-  if (!(event.title && event.description)) {
+  if (!(thisEvent.title && thisEvent.description)) {
     alert("You must enter an example text and description!");
     return;
   }
 
-  API.saveEvent(event).then(function() {
+  API.saveEvent(thisEvent).then(function() {
     refreshEvents();
   });
   $eventName.val("");
