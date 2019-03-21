@@ -1,3 +1,5 @@
+//var moment = require("moment");
+
 // Get references to page elements
 var $eventName = $("#event-name");
 var $eventStartDate = $("#event-startdate");
@@ -38,7 +40,6 @@ var API = {
 // refreshExamples gets new examples from the db and repopulates the list
 var refreshEvents = function() {
   API.getEvents().then(function(data) {
-    
     console.log("Refreshing events...");
 
     var $events = data.map(function(thisEvent) {
@@ -57,10 +58,9 @@ var refreshEvents = function() {
         .addClass("btn btn-danger float-right delete")
         .text(" Delete");
 
-      var $trashcan = $("<i>")
-        .addClass("fas fa-trash-alt");
+      var $trashcan = $("<i>").addClass("fas fa-trash-alt");
 
-      $button.prepend($trashcan);  
+      $button.prepend($trashcan);
       $li.append($button);
 
       return $li;
@@ -115,7 +115,9 @@ var handleDeleteBtnClick = function() {
   });
 };
 
-
+var formatDate = function(date) {
+  moment(date).format("YYYY-MM-DD");
+};
 
 // Add event listeners to the submit and delete buttons
 $submitBtn.on("click", handleFormSubmit);
