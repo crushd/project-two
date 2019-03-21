@@ -1,25 +1,21 @@
-
-// config/passport.js
-				
+// config/passport.js				
 // load all the things we need
 var LocalStrategy   = require('passport-local').Strategy;
 
 var mysql = require('mysql');
 
 var connection = mysql.createConnection({
-				  host     : 'localhost',
-				  user     : 'root',
-				  password : ''
-				});
+	host: 'localhost',
+    user: 'root',
+	password: ''
+});
 
 connection.query('USE eventsdb');	
 
 // expose this function to our app using module.exports
 module.exports = function(passport) {
 
-	// =========================================================================
     // passport session setup ==================================================
-    // =========================================================================
     // required for persistent login sessions
     // passport needs ability to serialize and unserialize users out of session
 
