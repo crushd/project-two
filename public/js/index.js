@@ -133,6 +133,7 @@ var handleDeleteBtnClick = function() {
 // handlePutBtnClick is called when an example's edit button is clicked
 // Edit the example from the db
 var handleEditBtnClick = function() {
+  console.log("this is hitting");
   var idToEdit = $(this)
     .parent()
     .attr("data-id");
@@ -142,7 +143,10 @@ var handleEditBtnClick = function() {
   });
 };
 
-$eventList.on("click", ".edit", handleEditBtnClick);
+$(document).on("click", "#edit", handleEditBtnClick);
+$("#edit").on("click", function(log) {
+  console.log("this is working", log);
+});
 //--------------------------------------------------------------------
 
 // Add event listeners to the submit and delete buttons
