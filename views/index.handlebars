@@ -49,6 +49,8 @@
             <a href="event/{{this.id}}">{{this.text}}</a>
             <button class="btn btn-success float-right edit"> y</button>
           </li>
+          {{/each}}
+          {{#each events}}
           <li data-id="{{this.id}}" class="list-group-item">
             <a href="event/{{this.id}}">{{this.text}}</a>
             <button class="btn btn-danger float-right delete"> x</button>

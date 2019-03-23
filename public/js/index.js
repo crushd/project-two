@@ -27,14 +27,14 @@ var API = {
       type: "GET"
     });
   },
-  //--------------------------------------------
-  updateEvent: function(id) {
+  //------------------------------
+  putEvent: function(id) {
     return $.ajax({
       url: "api/events/" + id,
       type: "PUT"
     });
   },
-  //----------------------------------------------
+  //-------------------------------
   deleteEvent: function(id) {
     return $.ajax({
       url: "api/events/" + id,
@@ -59,24 +59,23 @@ var refreshEvents = function() {
           "data-id": thisEvent.id
         })
         .append($a);
+      //----------------------------------------
+      var $button = $("<button>")
+        .addClass("btn btn-success float-right edit")
+        .text(" Edit");
 
-      // add delete button
-      var $Button = $("<button>")
+      var $pencil = $("<i>").addClass("far fa-edit");
+
+      $button.prepend($pencil);
+      //----------------------------------------
+
+      var $button = $("<button>")
         .addClass("btn btn-danger float-right delete")
         .text(" Delete");
 
       var $trashcan = $("<i>").addClass("fas fa-trash-alt");
-      //-----------------------------------------------------------------
-      // add edit button
-      var $Button = $("<button>")
-        .addClass("btn btn-success float-right edit")
-        .text(" Edit");
 
-      var $pencil = $("<i>").addClass("fas fa-edit");
-
-      $Button.prepend($pencil);
-      //--------------------------------------------------------------
-      $Button.prepend($trashcan);
+      $button.prepend($trashcan);
       $li.append($button);
 
       return $li;
@@ -130,22 +129,24 @@ var handleDeleteBtnClick = function() {
     refreshEvents();
   });
 };
-//------------------------------------------------------------------------
-//handlePutBtnClick is called when an example's edit button is clicked
-var handlePutBtnClick = function() {
-  var idToUpdate = $(this)
+//--------------------------------------------------------------------
+// handlePutBtnClick is called when an example's edit button is clicked
+// Edit the example from the db
+var handleEditBtnClick = function() {
+  var idToEdit = $(this)
     .parent()
     .attr("data-id");
 
-  API.updateEvent(idToUpdate).then(function() {
+  API.editEvent(idToEdit).then(function() {
     refreshEvents();
   });
 };
-//--------------------------------------------------------------------------
+
+$eventList.on("click", ".edit", handleEditBtnClick);
+//--------------------------------------------------------------------
+
 // Add event listeners to the submit and delete buttons
 $submitBtn.on("click", handleFormSubmit);
 $eventList.on("click", ".delete", handleDeleteBtnClick);
-//---------------------------------------------------------------------
-$eventList.on("click", ".update", handlePutBtnClick);
-//---------------------------------------------------------------------
+
 refreshEvents();
