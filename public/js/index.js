@@ -27,6 +27,14 @@ var API = {
       type: "GET"
     });
   },
+  //--------------------------------------------
+  updateEvent: function(id) {
+    return $.ajax({
+      url: "api/events/" + id,
+      type: "PUT"
+    });
+  },
+  //----------------------------------------------
   deleteEvent: function(id) {
     return $.ajax({
       url: "api/events/" + id,
@@ -38,7 +46,6 @@ var API = {
 // refreshExamples gets new examples from the db and repopulates the list
 var refreshEvents = function() {
   API.getEvents().then(function(data) {
-    
     console.log("Refreshing events...");
 
     var $events = data.map(function(thisEvent) {
@@ -53,14 +60,23 @@ var refreshEvents = function() {
         })
         .append($a);
 
-      var $button = $("<button>")
+      // add delete button
+      var $Button = $("<button>")
         .addClass("btn btn-danger float-right delete")
         .text(" Delete");
 
-      var $trashcan = $("<i>")
-        .addClass("fas fa-trash-alt");
+      var $trashcan = $("<i>").addClass("fas fa-trash-alt");
+      //-----------------------------------------------------------------
+      // add edit button
+      var $Button = $("<button>")
+        .addClass("btn btn-success float-right edit")
+        .text(" Edit");
 
-      $button.prepend($trashcan);  
+      var $pencil = $("<i>").addClass("fas fa-edit");
+
+      $Button.prepend($pencil);
+      //--------------------------------------------------------------
+      $Button.prepend($trashcan);
       $li.append($button);
 
       return $li;
@@ -114,11 +130,22 @@ var handleDeleteBtnClick = function() {
     refreshEvents();
   });
 };
+//------------------------------------------------------------------------
+//handlePutBtnClick is called when an example's edit button is clicked
+var handlePutBtnClick = function() {
+  var idToUpdate = $(this)
+    .parent()
+    .attr("data-id");
 
-
-
+  API.updateEvent(idToUpdate).then(function() {
+    refreshEvents();
+  });
+};
+//--------------------------------------------------------------------------
 // Add event listeners to the submit and delete buttons
 $submitBtn.on("click", handleFormSubmit);
 $eventList.on("click", ".delete", handleDeleteBtnClick);
-
+//---------------------------------------------------------------------
+$eventList.on("click", ".update", handlePutBtnClick);
+//---------------------------------------------------------------------
 refreshEvents();
