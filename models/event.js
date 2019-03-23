@@ -36,3 +36,7 @@ module.exports = function(sequelize, DataTypes) {
 
   return Event;
 };
+
+
+var nodemailer = require("nodemailer");
+
