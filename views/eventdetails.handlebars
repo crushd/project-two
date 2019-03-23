@@ -8,19 +8,33 @@
             <div class="col-2"><strong>ID</strong>: {{event.id}}</div>
           </h5>
           <p>
-            </p>
+          </p>
           <p>
-          <p>
-            <strong>Start</strong>: {{event.startdate}}</p>
-          <p>
-          <p>
-            <strong>End</strong>: {{event.enddate}}</p>
-          <p>
-          <p>
-            <strong>RSVP:</strong>: {{event.rsvpdate}}</p>
-          <p>
-            <strong>Description:</strong> {{event.description}}</p>
-            <a href="/">← Back To Home</a>
+            <p>
+              <strong>Start</strong>: {{event.startdate}}</p>
+              
+              <p>
+              <p>
+                <strong>End</strong>: {{event.enddate}}</p>
+              <p>
+                <p>
+                  <strong>RSVP:</strong>: {{event.rsvpdate}}</p>
+                <p>
+                  <strong>Description:</strong> {{event.description}}</p>
+
+                <a href="/">← Back To Home</a>
+
+                <a id="email" href="/invite">e-mail data</a>
+                <script>
+
+                  var link = document.getElementById('email');
+
+                  var nodemailer = require('nodemailer');
+
+
+
+
+                </script>
         </div>
       </div>
     </div>
