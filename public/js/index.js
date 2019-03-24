@@ -1,3 +1,22 @@
+
+
+// var moment = require("moment");
+// let startdate_value = new Date().toISOString().substr(0, 10);
+// document.querySelector("#event-startdate").value = startdate_value;
+// console.log(startdate_value);
+var sd_date = moment().format("YYYY-MM-DD");
+var sd_time = "20:00";
+var ed_time = "22:00";
+
+var thisStartDate = moment(sd_date+' '+sd_time).format("YYYY-MM-DDThh:mm");
+var thisEndDate = moment(sd_date+' '+ed_time).format("YYYY-MM-DDThh:mm");
+
+document.querySelector("#event-startdate").value = thisStartDate;
+document.querySelector("#event-enddate").value = thisEndDate;
+
+//console.log(thisStartDate);
+//console.log(thisEndDate);
+
 // Get references to page elements
 var $eventName = $("#event-name");
 var $eventStartDate = $("#event-startdate");
@@ -8,6 +27,7 @@ var $eventLocation = $("#event-location");
 var $eventDescription = $("#event-description");
 var $submitBtn = $("#submit");
 var $eventList = $("#event-list");
+
 
 // The API object contains methods for each kind of request we'll make
 var API = {
@@ -70,13 +90,25 @@ var refreshEvents = function() {
       //----------------------------------------
 
       var $button = $("<button>")
-        .addClass("btn btn-danger float-right delete")
+        .addClass("btn btn-danger float-right delete mx-1")
         .text(" Delete");
 
+<<<<<<< HEAD
       var $trashcan = $("<i>").addClass("fas fa-trash-alt");
+=======
+      var $ebutton = $("<button>")
+        .addClass("btn btn-primary float-right mx-1")
+        .text(" Edit");
+
+      var $trashcan = $("<i>").addClass("fas fa-trash-alt");
+      var $editpencil = $("<i>").addClass("fas fa-pen");
+>>>>>>> master
 
       $button.prepend($trashcan);
       $li.append($button);
+
+      $ebutton.prepend($editpencil);
+      $li.append($ebutton);
 
       return $li;
     });
@@ -93,7 +125,7 @@ var handleFormSubmit = function(event) {
 
   var thisEvent = {
     title: $eventName.val().trim(),
-    startdate: $eventStartDate.val().trim(),
+    startdate: moment($eventStartDate.val().trim()).format("YYYY-MM-DD"),
     enddate: $eventEndDate.val().trim(),
     rsvpdate: $eventRSVPDate.val().trim(),
     category: $eventCategory.val().trim(),
@@ -138,6 +170,7 @@ var handleEditBtnClick = function() {
     .parent()
     .attr("data-id");
 
+<<<<<<< HEAD
   API.editEvent(idToEdit).then(function() {
     refreshEvents();
   });
@@ -148,6 +181,11 @@ $("#edit").on("click", function(log) {
   console.log("this is working", log);
 });
 //--------------------------------------------------------------------
+=======
+var formatDate = function(date) {
+  moment(date).format("YYYY-MM-DD");
+};
+>>>>>>> master
 
 // Add event listeners to the submit and delete buttons
 $submitBtn.on("click", handleFormSubmit);

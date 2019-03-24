@@ -17,13 +17,6 @@ module.exports = function(app) {
     });
   });
 
-  // edit an example by id
-  app.put("/api/events/:id", function(req, res) {
-    db.Event.update({ where: { id: req.params.id } }).then(function(dbEvents) {
-      res.json(dbEvents);
-    });
-  });
-
   // Delete an example by id
   app.delete("/api/events/:id", function(req, res) {
     db.Event.destroy({ where: { id: req.params.id } }).then(function(dbEvents) {
@@ -31,11 +24,15 @@ module.exports = function(app) {
     });
   });
 
-  app.get("/invite", function(req, res) {
+  app.get("/invite/:id", function(req, res) {
     res.render("contact");
   });
 
-  app.post("/send", function(req, res) {
+  app.get("/invite/:id/:response", function(req, res) {
+    res.send("Record " + req.params.response + "response in database for Invite ID " + req.params.id);
+  });
+
+  app.post("/invite/send", function(req, res) {
     console.log(req.body);
     var output = `
       <p>You have a new event invite</p>

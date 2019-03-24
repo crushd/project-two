@@ -26,6 +26,17 @@ module.exports = function(sequelize, DataTypes) {
     }
   });
 
+<<<<<<< HEAD
+=======
+  Event.associate = function(models) {
+    // Associating Author with Posts
+    // When an Author is deleted, also delete any associated Posts
+    Event.hasMany(models.Invite, {
+      onDelete: "cascade"
+    });
+  };
+
+>>>>>>> master
   return Event;
 };
 
