@@ -3,38 +3,23 @@
     <div class="col-8 offset-2">
       <div class="card mt-4">
         <div class="card-body">
+          
           <h5 class="card-title row">
             <div class="col">{{event.title}} Details</div>
             <div class="col-2"><strong>ID</strong>: {{event.id}}</div>
           </h5>
-          <p>
-          </p>
-          <p>
-            <p>
-              <strong>Start</strong>: {{event.startdate}}</p>
-              
-              <p>
-              <p>
-                <strong>End</strong>: {{event.enddate}}</p>
-              <p>
-                <p>
-                  <strong>RSVP:</strong>: {{event.rsvpdate}}</p>
-                <p>
-                  <strong>Description:</strong> {{event.description}}</p>
 
-                <!--<a href="/">← Back To Home</a>-->
-
-                <a class="btn btn-primary" id="email" href="/invite/{{event.id}}"><i class="fas fa-envelope"></i> Invite</a>
-                <script>
-
-                  var link = document.getElementById('email');
-
-                  var nodemailer = require('nodemailer');
-
-
-
-
-                </script>
+            <p><strong>Start</strong>: {{event.startdate}}</p>
+            <p><strong>End</strong>: {{event.enddate}}</p>
+            <p><strong>RSVP</strong>: {{event.rsvpdate}}</p>
+            <p><strong>Description</strong>: {{event.description}}</p>
+            <p><a class="btn btn-primary" id="email" href="/invite/{{event.id}}"><i class="fas fa-envelope"></i> Invite</a></p>
+            
+            <script>
+              var link = document.getElementById('email');
+              var nodemailer = require('nodemailer');
+            </script>
+        
         </div>
       </div>
     </div>

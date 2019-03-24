@@ -28,6 +28,10 @@ module.exports = function(app) {
     res.render("contact");
   });
 
+  app.get("/invite/:id/:response", function(req, res) {
+    res.send("Record " + req.params.response + "response in database for Invite ID " + req.params.id);
+  });
+
   app.post("/send", function(req, res) {
     console.log(req.body);
     var output = `

@@ -14,8 +14,8 @@ var thisEndDate = moment(sd_date+' '+ed_time).format("YYYY-MM-DDThh:mm");
 document.querySelector("#event-startdate").value = thisStartDate;
 document.querySelector("#event-enddate").value = thisEndDate;
 
-console.log(thisStartDate);
-console.log(thisEndDate);
+//console.log(thisStartDate);
+//console.log(thisEndDate);
 
 // Get references to page elements
 var $eventName = $("#event-name");
