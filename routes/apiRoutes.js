@@ -24,7 +24,7 @@ module.exports = function(app) {
     });
   });
 
-  app.get("/invite", function(req, res) {
+  app.get("/invite/:id", function(req, res) {
     res.render("contact");
   });
 
@@ -32,7 +32,7 @@ module.exports = function(app) {
     res.send("Record " + req.params.response + "response in database for Invite ID " + req.params.id);
   });
 
-  app.post("/send", function(req, res) {
+  app.post("/invite/send", function(req, res) {
     console.log(req.body);
     var output = `
       <p>You have a new event invite</p>
@@ -76,7 +76,7 @@ module.exports = function(app) {
           console.log(info);
     
           res.render('contact',{
-            msg: ` Email has been sent thankyou!!`
+            msg: `Email has been sent thank you!!`
 
           });
 
