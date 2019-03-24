@@ -11,9 +11,14 @@
           <p><strong>End</strong>: {{event.enddate}}</p>
           <p><strong>RSVP:</strong>: {{event.rsvpdate}}</p>
           <p><strong>Description:</strong> {{event.description}}</p>
-            <a href="/">← Back To Home</a>
             <a href="event/{{this.id}}">{{this.text}}</a>
             <button id="edit" class="btn btn-success float-right edit"> EDIT </button>
+            <a href="/">← Back To Home</a>
+            <a id="email" href="/invite">e-mail data</a>
+            <script>
+              var link = document.getElementById('email');
+              var nodemailer = require('nodemailer');
+            </script>
         </div>
       </div>
     </div>
