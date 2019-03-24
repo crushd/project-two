@@ -104,7 +104,7 @@ var handleFormSubmit = function(event) {
 
   var thisEvent = {
     title: $eventName.val().trim(),
-    startdate: $eventStartDate.val().trim(),
+    startdate: moment($eventStartDate.val().trim()).format("YYYY-MM-DD"),
     enddate: $eventEndDate.val().trim(),
     rsvpdate: $eventRSVPDate.val().trim(),
     category: $eventCategory.val().trim(),
