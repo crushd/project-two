@@ -24,7 +24,7 @@ module.exports = function(app) {
     });
   });
 
-  app.get("/invite", function(req, res) {
+  app.get("/invite/:id", function(req, res) {
     res.render("contact");
   });
 
