@@ -1,4 +1,21 @@
-//var moment = require("moment");
+
+
+// var moment = require("moment");
+// let startdate_value = new Date().toISOString().substr(0, 10);
+// document.querySelector("#event-startdate").value = startdate_value;
+// console.log(startdate_value);
+var sd_date = moment().format("YYYY-MM-DD");
+var sd_time = "20:00";
+var ed_time = "22:00";
+
+var thisStartDate = moment(sd_date+' '+sd_time).format("YYYY-MM-DDThh:mm");
+var thisEndDate = moment(sd_date+' '+ed_time).format("YYYY-MM-DDThh:mm");
+
+document.querySelector("#event-startdate").value = thisStartDate;
+document.querySelector("#event-enddate").value = thisEndDate;
+
+console.log(thisStartDate);
+console.log(thisEndDate);
 
 // Get references to page elements
 var $eventName = $("#event-name");
@@ -10,6 +27,7 @@ var $eventLocation = $("#event-location");
 var $eventDescription = $("#event-description");
 var $submitBtn = $("#submit");
 var $eventList = $("#event-list");
+
 
 // The API object contains methods for each kind of request we'll make
 var API = {
@@ -55,13 +73,21 @@ var refreshEvents = function() {
         .append($a);
 
       var $button = $("<button>")
-        .addClass("btn btn-danger float-right delete")
+        .addClass("btn btn-danger float-right delete mx-1")
         .text(" Delete");
 
+      var $ebutton = $("<button>")
+        .addClass("btn btn-primary float-right mx-1")
+        .text(" Edit");
+
       var $trashcan = $("<i>").addClass("fas fa-trash-alt");
+      var $editpencil = $("<i>").addClass("fas fa-pen");
 
       $button.prepend($trashcan);
       $li.append($button);
+
+      $ebutton.prepend($editpencil);
+      $li.append($ebutton);
 
       return $li;
     });

@@ -22,9 +22,9 @@
                 <p>
                   <strong>Description:</strong> {{event.description}}</p>
 
-                <a href="/">← Back To Home</a>
+                <!--<a href="/">← Back To Home</a>-->
 
-                <a id="email" href="/invite">e-mail data</a>
+                <a class="btn btn-primary" id="email" href="/invite/{{event.id}}"><i class="fas fa-envelope"></i> Invite</a>
                 <script>
 
                   var link = document.getElementById('email');
@@ -40,3 +40,7 @@
     </div>
   </div>
 </div>
+
+<div class="text-center pt-3">
+      <a href="../">Home</a> | <a href="../api/events/">API Events</a><!-- | <a href="../auth/login">Login</a> | <a href="../auth/logout">Logout</a>-->
+    </div>
