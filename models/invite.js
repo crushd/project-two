@@ -1,20 +1,20 @@
 module.exports = function(sequelize, DataTypes) {
-    var Invite = sequelize.define("Invite", {
-      email: {
-          type: DataTypes.STRING,
-          validate: {
-              isEmail: true
-            }
-      },
-      status: {
-        type: DataTypes.INTEGER,
-        defaultValue: 0
-      },
-      event_id: {
-        type: DataTypes.STRING
+  var Invite = sequelize.define("Invite", {
+    email: {
+      type: DataTypes.STRING,
+      validate: {
+        isEmail: true
       }
-    });
-    
-    return Invite;
-  };
-  
+    },
+    status: {
+      type: DataTypes.INTEGER,
+      defaultValue: 0
+    },
+    // eslint-disable-next-line camelcase
+    event_id: {
+      type: DataTypes.STRING
+    }
+  });
+
+  return Invite;
+};

@@ -32,7 +32,7 @@ module.exports = function(app) {
     res.send("Record " + req.params.response + "response in database for Invite ID " + req.params.id);
   });
 
-  app.post("/send", function(req, res) {
+  app.post("/invite/send", function(req, res) {
     console.log(req.body);
     var output = `
       <p>You have a new event invite</p>
