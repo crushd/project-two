@@ -112,10 +112,10 @@ var handleFormSubmit = function(event) {
     description: $eventDescription.val().trim()
   };
 
-  // if (!(thisEvent.title && thisEvent.description)) {
-  //   alert("You must enter an example text and description!");
-  //   return;
-  // }
+  if (!(thisEvent.title && thisEvent.description)) {
+    alert("You must enter an example text and description!");
+    return;
+  }
 
   API.saveEvent(thisEvent).then(function() {
     refreshEvents();
@@ -128,7 +128,7 @@ var handleFormSubmit = function(event) {
   $eventCategory.val("");
   $eventLocation.val("");
   $eventDescription.val("");
-  
+
 };
 
 // handleDeleteBtnClick is called when an example's delete button is clicked
