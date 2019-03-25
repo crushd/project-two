@@ -21,7 +21,7 @@ module.exports = function(app) {
 
       dbEvents.startdate = moment(dbEvents.startdate).format("YYYY-MM-DD");
 
-      console.log(dbEvents.startdate);
+      // console.log(dbEvents.startdate);
 
 
       res.render("eventdetails", {
