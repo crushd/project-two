@@ -104,7 +104,7 @@ var handleFormSubmit = function(event) {
 
   var thisEvent = {
     title: $eventName.val().trim(),
-    startdate: moment($eventStartDate.val().trim()).format("YYYY-MM-DD"),
+    startdate: $eventStartDate.val().trim(),
     enddate: $eventEndDate.val().trim(),
     rsvpdate: $eventRSVPDate.val().trim(),
     category: $eventCategory.val().trim(),
@@ -112,14 +112,15 @@ var handleFormSubmit = function(event) {
     description: $eventDescription.val().trim()
   };
 
-  if (!(thisEvent.title && thisEvent.description)) {
-    alert("You must enter an example text and description!");
-    return;
-  }
+  // if (!(thisEvent.title && thisEvent.description)) {
+  //   alert("You must enter an example text and description!");
+  //   return;
+  // }
 
   API.saveEvent(thisEvent).then(function() {
     refreshEvents();
   });
+
   $eventName.val("");
   $eventStartDate.val("");
   $eventEndDate.val("");
@@ -127,6 +128,7 @@ var handleFormSubmit = function(event) {
   $eventCategory.val("");
   $eventLocation.val("");
   $eventDescription.val("");
+  
 };
 
 // handleDeleteBtnClick is called when an example's delete button is clicked
