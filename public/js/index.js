@@ -10,9 +10,11 @@ var ed_time = "22:00";
 
 var thisStartDate = moment(sd_date+' '+sd_time).format("YYYY-MM-DDThh:mm");
 var thisEndDate = moment(sd_date+' '+ed_time).format("YYYY-MM-DDThh:mm");
+var thisRSVPDate = moment(sd_date+' '+sd_time).format("YYYY-MM-DDThh:mm");
 
 document.querySelector("#event-startdate").value = thisStartDate;
 document.querySelector("#event-enddate").value = thisEndDate;
+document.querySelector("#event-rsvpdate").value = thisRSVPDate;
 
 //console.log(thisStartDate);
 //console.log(thisEndDate);
