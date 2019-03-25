@@ -46,8 +46,20 @@ module.exports = function(app) {
 
   });
 
-  app.get("/invite/:id/:response", function(req, res) {
-    res.send("Record " + req.params.response + "response in database for Invite ID " + req.params.id);
+  app.put("/invite/:id/:rsvp", function(req, res) {
+    
+    db.Invite.update({
+      status: req.params.rsvp
+    }, {
+      where: {
+        id: req.params.id
+      }
+    }).then(function(rowsUpdated) {
+      res.json(rowsUpdated)
+      //res.send("Record " + req.params.rsvp + " response in database for Invite ID " + req.params.id);
+    })
+    
+      
   });
 
   app.post("/invite/send", function(req, res) {

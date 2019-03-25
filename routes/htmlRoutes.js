@@ -28,14 +28,14 @@ module.exports = function(app) {
     });
   });
 
-  // Load example page and pass in an example by id
-  app.get("/user/:id", function(req, res) {
-    db.Event.findOne({ where: { id: req.params.id } }).then(function(dbEvents) {
-      res.render("userdetail", {
-        event: dbEvents
-      });
-    });
-  });
+  // // Load example page and pass in an example by id
+  // app.get("/user/:id", function(req, res) {
+  //   db.Event.findOne({ where: { id: req.params.id } }).then(function(dbEvents) {
+  //     res.render("userdetail", {
+  //       event: dbEvents
+  //     });
+  //   });
+  // });
 
   // Render 404 page for any unmatched routes
   app.get("*", function(req, res) {
