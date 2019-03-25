@@ -9,6 +9,10 @@
             <div class="col-2"><strong>ID</strong>: {{event.id}}</div>
           </h5>
 
+            <script>
+              console.log("This event date: " + event.startdate);
+            </script>
+
             <p><strong>Start</strong>: {{event.startdate}}</p>
             <p><strong>End</strong>: {{event.enddate}}</p>
             <p><strong>RSVP</strong>: {{event.rsvpdate}}</p>
@@ -27,5 +31,5 @@
 </div>
 
 <div class="text-center pt-3">
-      <a href="../">Home</a> | <a href="../api/events/">API Events</a><!-- | <a href="../auth/login">Login</a> | <a href="../auth/logout">Logout</a>-->
+      <a href="../">Home</a> | <a href="../api/events/">API Events</a> | <a href="../api/invites/">API Invites</a><!-- | <a href="../auth/logout">Logout</a>-->
     </div>

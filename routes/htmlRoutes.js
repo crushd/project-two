@@ -17,8 +17,6 @@ module.exports = function(app) {
     db.Event.findOne({ where: { id: req.params.id } }).then(function(dbEvents) {
       // formatDate(dbEvents.startdate);
 
-      
-
       dbEvents.startdate = moment(dbEvents.startdate).format("YYYY-MM-DD");
 
       // console.log(dbEvents.startdate);
