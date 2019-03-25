@@ -12,16 +12,6 @@ module.exports = function(app) {
     });
   });
 
-  app.get("/invite/:id", function(req, res) {
-    
-    db.Event.findOne({
-      where: { id: req.params.id }
-    }).then(function(dbEvents) {
-
-      console.log(dbEvents);
-    });
-  });
-
   // Load example page and pass in an example by id
   app.get("/event/:id", function(req, res) {
     db.Event.findOne({ where: { id: req.params.id } }).then(function(dbEvents) {

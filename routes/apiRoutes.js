@@ -25,7 +25,18 @@ module.exports = function(app) {
   });
 
   app.get("/invite/:id", function(req, res) {
-    res.render("contact");
+    
+    db.Event.findOne({where: {id: req.params.id}}).then(function(dbEvents) {
+      
+      //res.send("Invite details?");
+      //console.log("Event Title: " + dbEvents.title);
+      
+      res.render("contact", {
+        event:dbEvents
+      });
+
+    });
+
   });
 
   app.get("/invite/:id/:response", function(req, res) {
