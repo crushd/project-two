@@ -47,11 +47,8 @@ module.exports = function(app) {
 
     db.Invite.create({email: req.body.email,event_id: req.body.eventId}).then(function(inviteEvent) {
       
-    //res.json(inviteEvent);
-    console.log(inviteEvent)
+    //console.log(inviteEvent)
     
-
-
     console.log(req.body);
     var output = `
       <p>You have a new event invite</p>
