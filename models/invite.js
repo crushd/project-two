@@ -9,9 +9,6 @@ module.exports = function(sequelize, DataTypes) {
       status: {
         type: DataTypes.INTEGER,
         defaultValue: 0
-      },
-      event_id: {
-        type: DataTypes.INTEGER
       }
     });
 
@@ -23,7 +20,7 @@ module.exports = function(sequelize, DataTypes) {
           allowNull: false
         }
       });
-      
+
     };
     
     return Invite;

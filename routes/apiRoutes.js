@@ -17,6 +17,13 @@ module.exports = function(app) {
     });
   });
 
+  // Create a new example
+  app.get("/api/invites", function(req, res) {
+    db.Invite.findAll({}).then(function(dbInvites) {
+      res.json(dbInvites);
+    });
+  });
+
   // Delete an example by id
   app.delete("/api/events/:id", function(req, res) {
     db.Event.destroy({ where: { id: req.params.id } }).then(function(dbEvents) {
@@ -45,7 +52,7 @@ module.exports = function(app) {
 
   app.post("/invite/send", function(req, res) {
 
-    db.Invite.create({email: req.body.email,event_id: req.body.eventId}).then(function(inviteEvent) {
+    db.Invite.create({email: req.body.email,EventId: req.body.eventId}).then(function(inviteEvent) {
       
     //console.log(inviteEvent)
     
