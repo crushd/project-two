@@ -6,40 +6,53 @@
           
           <h5 class="card-title row">
             <div class="col">{{event.title}} Details</div>
-            <div class="col-2"><strong>ID</strong>: {{event.id}}</div>
+            <div class="col-3"><a class="btn btn-primary" id="email" href="/invite/{{event.id}}"><i class="fas fa-envelope"></i> Invite Guests</a></div>
           </h5>
 
             <script>
               console.log("This event date: " + event.startdate);
             </script>
 
-            <p><strong>Start</strong>: {{event.startdate}}</p>
-            <p><strong>End</strong>: {{event.enddate}}</p>
-            <p><strong>RSVP</strong>: {{event.rsvpdate}}</p>
-            <p><strong>Description</strong>: {{event.description}}</p>
+            <div class="row">
+              <div class="col-4 text-center"><p><strong>Start Date</strong>:<br>{{event.startdate}}</p></div>
+              <div class="col-4 text-center"><p><strong>End Date</strong>:<br>{{event.enddate}}</p></div>
+              <div class="col-4 text-center"><p><strong>RSVP By</strong>:<br>{{event.rsvpdate}}</p></div>
+            </div>
 
+            <div class="py-2">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">Description</h5>
+                  {{event.description}}
+                </div>
+              </div>
+            </div>
 
-            <ul class="list-group">
-              <li class="list-group-item d-flex justify-content-between align-items-center">
-                codyrush@gmail.com
-                <span class="badge badge-success">Yes</span>
-              </li>
-              <li class="list-group-item d-flex justify-content-between align-items-center">
-                jeffreyyoung780@yahoo.com
-                <span class="badge badge-secondary">No Response</span>
-              </li>
-              <li class="list-group-item d-flex justify-content-between align-items-center">
-                ericlz25412@gmail.com
-                <span class="badge badge-danger">No</span>
-              </li>
-              <li class="list-group-item d-flex justify-content-between align-items-center">
-                michaelbarela17@gmail.com
-                <span class="badge badge-warning">Maybe</span>
-              </li>
-            </ul>
-
-
-            <p><a class="btn btn-primary" id="email" href="/invite/{{event.id}}"><i class="fas fa-envelope"></i> Invite</a></p>
+            <div class="py-2">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">Guests</h5>
+                  <ul class="list-group">
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                      codyrush@gmail.com
+                      <span class="badge badge-success">Yes</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                      jeffreyyoung780@yahoo.com
+                      <span class="badge badge-secondary">No Response</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                      ericlz25412@gmail.com
+                      <span class="badge badge-danger">No</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                      michaelbarela17@gmail.com
+                      <span class="badge badge-warning">Maybe</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
             
             <script>
               var link = document.getElementById('email');
