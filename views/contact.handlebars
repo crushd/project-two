@@ -16,7 +16,10 @@
       <div class="company-info">
         <h3>Events you want to send</h3>
       <div class="list-of-events">
-
+        <ul>
+          <li>Event: {{event.title}}</li>
+          <li>Description: {{event.description}}</li>
+        </ul>
       </div>
       </div>
       <div class="contact">
@@ -40,6 +43,8 @@
             <label>Message</label>
             <textarea name="message" rows="5"></textarea>
           </p>
+          <input type="hidden" name="eventId" value="{{event.id}}">
+          <input type="hidden" name="eventTitle" value="{{event.title}}">
           <p class="full">
             <button type="submit">Submit</button>
           </p>
