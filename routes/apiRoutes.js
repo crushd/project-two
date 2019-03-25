@@ -44,21 +44,27 @@ module.exports = function(app) {
   });
 
   app.post("/invite/send", function(req, res) {
+
+    db.Invite.create({email: req.body.email,event_id: req.body.eventId}).then(function(inviteEvent) {
+      
+    //res.json(inviteEvent);
+    console.log(inviteEvent)
+    
+
+
     console.log(req.body);
     var output = `
       <p>You have a new event invite</p>
-        <ul>    
+        <ul>
+          <li>Event: ${req.body.eventTitle}</li>
           <li>From: ${req.body.name}</li>
           <li>Email: ${req.body.email}</li>
           <li>Phone Number: ${req.body.phone}</li>
           <li>message: ${req.body.message}</li>
 
-          <li>link: </li>
-
-        
+          <li><a href="http://localhost:8080/event/${req.body.eventId}">View Event Details</a></li>
+          <li><a href="http://localhost:8080/invite/${inviteEvent.id}/1">Yes, I will attend</a> | <a href="http://localhost:8080/invite/${inviteEvent.id}/2">No, I will not attend</a> | <a href="http://localhost:8080/invite/${inviteEvent.id}/3">I might attend</a></li>
         </ul>
-    
-    
     `
 
     var transporter = nodemailer.createTransport({
@@ -88,10 +94,12 @@ module.exports = function(app) {
     
           res.render('contact',{
             msg: `Email has been sent thank you!!`
-
           });
 
 
      });
+
+    });
+
   });
 };

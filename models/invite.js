@@ -11,9 +11,19 @@ module.exports = function(sequelize, DataTypes) {
         defaultValue: 0
       },
       event_id: {
-        type: DataTypes.STRING
+        type: DataTypes.INTEGER
       }
     });
+
+    Invite.associate = function(models) {
+      // We're saying that a Post should belong to an Author
+      // A Post can't be created without an Author due to the foreign key constraint
+      Invite.belongsTo(models.Event, {
+        foreignKey: {
+          allowNull: false
+        }
+      });
+    };
     
     return Invite;
   };
