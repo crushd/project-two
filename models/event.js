@@ -1,28 +1,28 @@
 module.exports = function(sequelize, DataTypes) {
   var Event = sequelize.define("Event", {
     title: {
-        type: DataTypes.STRING,
-        allowNull: false,
-        validate: {
-          len: [1]
-        }
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        len: [1]
+      }
     },
     category: {
-        type: DataTypes.STRING,
-        defaultValue: "meetup"
+      type: DataTypes.STRING,
+      defaultValue: "meetup"
     },
     location: DataTypes.STRING,
     startdate: {
-        type: DataTypes.DATE
+      type: DataTypes.DATE
     },
     enddate: {
-        type: DataTypes.DATE
+      type: DataTypes.DATE
     },
     rsvpdate: {
-        type: DataTypes.DATE
+      type: DataTypes.DATE
     },
     description: {
-        type: DataTypes.TEXT
+      type: DataTypes.TEXT
     }
   });
 
@@ -37,6 +37,5 @@ module.exports = function(sequelize, DataTypes) {
   return Event;
 };
 
-
+// eslint-disable-next-line no-unused-vars
 var nodemailer = require("nodemailer");
-
