@@ -7,8 +7,12 @@ module.exports = function(app) {
       res.render("index", {
         msg: "Welcome to Event Creator!",
         examples: dbEvents
+     
       });
     });
+        
+  
+
   });
 
   // Load example page and pass in an example by id
@@ -33,4 +37,8 @@ module.exports = function(app) {
   app.get("*", function(req, res) {
     res.render("404");
   });
+
+  
+
+
 };

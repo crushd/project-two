@@ -15,6 +15,15 @@
     <div class="wrapper animated bounceInLeft">
       <div class="company-info">
         <h3>Events you want to send</h3>
+          {{#each listevent}}
+          <p> <h3>Title of event:</h3>{{title}}</p>
+          <p> <h3>  Category:</h3>{{this.category}}</p>
+         <p> <h3>Location:</h3>{{this.location}}</p>
+          <p> <h3>Startdate:</h3>{{this.startdate}}</p>
+          <p> <h3>Enddate:</h3>{{this.enddate}}</p>
+          <p> <h3>Description:</h3>{{this.description}}</p>
+          {{/each}}
+
       <div class="list-of-events">
 
       </div>
