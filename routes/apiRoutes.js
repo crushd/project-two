@@ -12,6 +12,18 @@ module.exports = function(app) {
     });
   });
 
+  // Get event by eventId
+  app.get("/api/events/:id", function(req, res) {
+    db.Event.findOne({
+      where: {id: req.params.id}
+    },
+    {
+      include: [db.Invite]
+    }).then(function(dbEvents) {
+      res.json(dbEvents);
+    });
+  });
+
   // Create a new example
   app.post("/api/events", function(req, res) {
     db.Event.create(req.body).then(function(dbEvents) {
@@ -60,9 +72,9 @@ module.exports = function(app) {
       where: {
         id: req.params.id
       }
-    }).then(function(rowsUpdated) {
-      res.json(rowsUpdated)
-      res.redirect("../../../event"+req.params.eid);
+    }).then(function() {
+      // res.json(rowsUpdated)
+      res.redirect("../../../event/"+req.params.eid);
       //res.send("Record " + req.params.rsvp + " response in database for Invite ID " + req.params.id);
     })
     
