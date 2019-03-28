@@ -145,9 +145,9 @@ var handleDeleteBtnClick = function() {
   });
 };
 
-var formatDate = function(date) {
-  moment(date).format("YYYY-MM-DD");
-};
+// var formatDate = function(date) {
+//   moment(date).format("YYYY-MM-DD");
+// };
 
 // Add event listeners to the submit and delete buttons
 $submitBtn.on("click", handleFormSubmit);

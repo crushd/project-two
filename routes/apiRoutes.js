@@ -5,7 +5,9 @@ var emailTemp = require("../views/emailTemp.handlebars");
 module.exports = function(app) {
   // Get all examples
   app.get("/api/events", function(req, res) {
-    db.Event.findAll({}).then(function(dbEvents) {
+    db.Event.findAll({
+      include: [db.Invite]
+    }).then(function(dbEvents) {
       res.json(dbEvents);
     });
   });
@@ -19,7 +21,11 @@ module.exports = function(app) {
 
   // Create a new example
   app.get("/api/invites", function(req, res) {
-    db.Invite.findAll({}).then(function(dbInvites) {
+    var query = {};
+    
+    db.Invite.findAll({
+      include: [db.Event]
+    }).then(function(dbInvites) {
       res.json(dbInvites);
     });
   });
@@ -46,7 +52,7 @@ module.exports = function(app) {
 
   });
 
-  app.put("/invite/:id/:rsvp", function(req, res) {
+  app.get("/invite/:id/:rsvp/:eid", function(req, res) {
     
     db.Invite.update({
       status: req.params.rsvp
@@ -56,6 +62,7 @@ module.exports = function(app) {
       }
     }).then(function(rowsUpdated) {
       res.json(rowsUpdated)
+      res.redirect("../../../event"+req.params.eid);
       //res.send("Record " + req.params.rsvp + " response in database for Invite ID " + req.params.id);
     })
     
@@ -76,10 +83,10 @@ module.exports = function(app) {
           <li>From: ${req.body.name}</li>
           <li>Email: ${req.body.email}</li>
           <li>Phone Number: ${req.body.phone}</li>
-          <li>message: ${req.body.message}</li>
+          <li>Message: ${req.body.message}</li>
 
           <li><a href="http://localhost:8080/event/${req.body.eventId}">View Event Details</a></li>
-          <li><a href="http://localhost:8080/invite/${inviteEvent.id}/1">Yes, I will attend</a> | <a href="http://localhost:8080/invite/${inviteEvent.id}/2">No, I will not attend</a> | <a href="http://localhost:8080/invite/${inviteEvent.id}/3">I might attend</a></li>
+          <li><a href="http://localhost:8080/invite/${inviteEvent.id}/1/${req.body.eventId}">Yes, I will attend</a> | <a href="http://localhost:8080/invite/${inviteEvent.id}/2/${req.body.eventId}">No, I will not attend</a> | <a href="http://localhost:8080/invite/${inviteEvent.id}/3/${req.body.eventId}">I might attend</a></li>
         </ul>
     `
 
@@ -98,7 +105,7 @@ module.exports = function(app) {
        var mailOptions = {
         from: 'eventcreator452@gmail.com', // sender address
         to: req.body.email, // list of receivers
-        subject: 'Subject of your email', // Subject line
+        subject: 'Email Invitation', // Subject line
         html: output// plain text body
       };
     
@@ -108,9 +115,11 @@ module.exports = function(app) {
         else
           console.log(info);
     
-          res.render('contact',{
-            msg: `Email has been sent thank you!!`
-          });
+          res.redirect("/event/"+req.body.eventId);
+
+          // res.render('contact',{
+          //   msg: `Email has been sent thank you!!`
+          // });
 
 
      });
