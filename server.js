@@ -1,6 +1,6 @@
 require("dotenv").config();
 var express = require("express");
-const authRoutes = require('./routes/authRoutes');
+const authRoutes = require("./routes/authRoutes");
 var exphbs = require("express-handlebars");
 //var moment = require("moment");
 
