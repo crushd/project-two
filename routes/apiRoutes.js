@@ -53,9 +53,6 @@ module.exports = function(app) {
     
     db.Event.findOne({where: {id: req.params.id}}).then(function(dbEvents) {
       
-      //res.send("Invite details?");
-      //console.log("Event Title: " + dbEvents.title);
-      
       res.render("contact", {
         event:dbEvents
       });
@@ -72,10 +69,15 @@ module.exports = function(app) {
       where: {
         id: req.params.id
       }
+<<<<<<< HEAD
     }).then(function() {
       // res.json(rowsUpdated)
       res.redirect("../../../event/"+req.params.eid);
       //res.send("Record " + req.params.rsvp + " response in database for Invite ID " + req.params.id);
+=======
+    }).then(function(rowsUpdated) {
+      res.redirect("../../../event"+req.params.eid);
+>>>>>>> 938d9ed68ef9e7be69fcc33db487629e0da872fb
     })
     
       
