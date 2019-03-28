@@ -4,19 +4,19 @@ var moment = require("moment");
 module.exports = function(app) {
   // Load index page
   app.get("/", function(req, res) {
+    res.render("index");
+  });
+
+  app.get("/create", function(req, res) {
     db.Event.findAll().then(function(dbEvents) {
-      res.render("index", {
+      res.render("addevent", {
         event: dbEvents
       });
     });
   });
 
-  app.get("/create", function(req, res) {
-    res.render("addevent");
-  });
-
   app.get("/events", function(req, res) {
-    db.Event.findAll({}).then(function(dbEvents) {
+    db.Event.findAll().then(function(dbEvents) {
       res.render("allevents", {
         event: dbEvents
       });

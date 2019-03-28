@@ -45,6 +45,19 @@
           <button id="submit" class="btn btn-primary float-right">Add Event</button>
         </form>
 
+        <div class="container">
+            <h3>Events:</h3>
+            <ul id="event-list" class="list-group">
+                {{#each events}}
+                <li data-id="{{this.id}}" class="list-group-item">
+                <a href="event/{{this.id}}">{{this.text}}</a>
+                <button class="btn btn-danger float-right delete"> x</button>
+                </li>
+                {{/each}}
+            </ul>
+        </div>
+
+
         
       </div>
     </div>

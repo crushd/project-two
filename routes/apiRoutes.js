@@ -13,11 +13,9 @@ module.exports = function(app) {
   });
 
   // Get event by eventId
-  app.get("/api/events/:id", function(req, res) {
+  app.get("/api/event/:id", function(req, res) {
     db.Event.findOne({
-      where: {id: req.params.id}
-    },
-    {
+      where: {id: req.params.id},
       include: [db.Invite]
     }).then(function(dbEvents) {
       res.json(dbEvents);
@@ -69,15 +67,8 @@ module.exports = function(app) {
       where: {
         id: req.params.id
       }
-<<<<<<< HEAD
-    }).then(function() {
-      // res.json(rowsUpdated)
-      res.redirect("../../../event/"+req.params.eid);
-      //res.send("Record " + req.params.rsvp + " response in database for Invite ID " + req.params.id);
-=======
     }).then(function(rowsUpdated) {
       res.redirect("../../../event"+req.params.eid);
->>>>>>> 938d9ed68ef9e7be69fcc33db487629e0da872fb
     })
     
       
