@@ -27,6 +27,7 @@ module.exports = function(app) {
   app.get("/event/:id", function(req, res) {
 
     db.Event.findOne({ where: { id: req.params.id } }).then(function(dbEvents) {
+      console.log(dbEvents);
       res.render("eventdetails", {
         event: dbEvents
       });
