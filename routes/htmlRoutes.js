@@ -26,11 +26,11 @@ module.exports = function(app) {
   // Load example page and pass in an example by id
   app.get("/event/:id", function(req, res) {
 
-    // db.Event.findOne({ where: { id: req.params.id } }).then(function(dbEvents) {
-    //   res.render("eventdetails", {
-    //     event: dbEvents
-    //   });
-    // });
+    db.Event.findOne({ where: { id: req.params.id } }).then(function(dbEvents) {
+      res.render("eventdetails", {
+        event: dbEvents
+      });
+    });
   });
 
   // Render 404 page for any unmatched routes
