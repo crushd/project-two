@@ -3,11 +3,11 @@
   <div class="container">
     <div class="row">
       <div class="col-8 offset-2">
-        <h1>{{msg}}</h1>
+        <h1 class="text-center">{{msg}}</h1>
         <!--<h2>Get Started by Creating an Event</h2>-->
 
 
-              <div class="card mt-4">
+              <div class="card my-4 dropshadow">
                 <div class="card-body">
 
                   <form class="clearfix mb-4" action="POST">
@@ -51,11 +51,9 @@
                 </div>
               </div>
 
-
-
         <div>
         <h3>Events:</h3>
-        <ul id="event-list" class="list-group">
+        <ul id="event-list" class="list-group dropshadow">
           {{#each events}}
           <li data-id="{{this.id}}" class="list-group-item">
             <a href="event/{{this.id}}">{{this.text}}</a>
@@ -66,7 +64,6 @@
         </div>
 
         
-      </div>
     </div>
   </div>
 </div>

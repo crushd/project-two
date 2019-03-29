@@ -12,6 +12,15 @@ module.exports = function(app) {
     });
   });
 
+  // Get a single event and its Invites
+  app.get("/api/events/:id", function(req, res) {
+    db.Event.findOne({
+      include: [db.Invite]
+    }).then(function(dbEvents) {
+      res.json(dbEvents);
+    });
+  });
+
   // Create a new example
   app.post("/api/events", function(req, res) {
     db.Event.create(req.body).then(function(dbEvents) {
@@ -29,6 +38,9 @@ module.exports = function(app) {
       res.json(dbInvites);
     });
   });
+
+
+
 
   // Delete an example by id
   app.delete("/api/events/:id", function(req, res) {

@@ -49,6 +49,12 @@ var API = {
       type: "GET"
     });
   },
+  getEventById: function(id) {
+    return $.ajax({
+      url: "api/events/" + id,
+      type: "GET"
+    });
+  },
   deleteEvent: function(id) {
     return $.ajax({
       url: "api/events/" + id,
