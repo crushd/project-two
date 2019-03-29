@@ -49,12 +49,26 @@ var API = {
       type: "GET"
     });
   },
+  getOneEvent: function(id) {
+    return $.ajax({
+      url: "api/event/" + id,
+      type: "GET"
+    })
+  }
   deleteEvent: function(id) {
     return $.ajax({
       url: "api/events/" + id,
       type: "DELETE"
     });
   }
+};
+
+var getThisEventDetails = function() {
+
+  API.getOneEvent(2).then(function(data) {
+    console.log(data);
+  })
+
 };
 
 // refreshExamples gets new examples from the db and repopulates the list
