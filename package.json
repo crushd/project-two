@@ -19,6 +19,7 @@
     "hogan": "^1.0.2",
     "mysql2": "^1.6.4",
     "nodemailer": "^5.1.1",
+    "nodemon": "^1.18.10",
     "passport": "^0.4.0",
     "passport-google-oauth": "^2.0.0",
     "passport-google-oauth20": "^2.0.0",

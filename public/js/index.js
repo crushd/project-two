@@ -1,4 +1,5 @@
-
+/* eslint-disable no-unused-vars */
+/* eslint-disable camelcase */
 
 // var moment = require("moment");
 // let startdate_value = new Date().toISOString().substr(0, 10);
@@ -8,9 +9,9 @@ var sd_date = moment().format("YYYY-MM-DD");
 var sd_time = "20:00";
 var ed_time = "22:00";
 
-var thisStartDate = moment(sd_date+' '+sd_time).format("YYYY-MM-DDThh:mm");
-var thisEndDate = moment(sd_date+' '+ed_time).format("YYYY-MM-DDThh:mm");
-var thisRSVPDate = moment(sd_date+' '+sd_time).format("YYYY-MM-DDThh:mm");
+var thisStartDate = moment(sd_date + " " + sd_time).format("YYYY-MM-DDThh:mm");
+var thisEndDate = moment(sd_date + " " + ed_time).format("YYYY-MM-DDThh:mm");
+var thisRSVPDate = moment(sd_date + " " + sd_time).format("YYYY-MM-DDThh:mm");
 
 document.querySelector("#event-startdate").value = thisStartDate;
 document.querySelector("#event-enddate").value = thisEndDate;
@@ -30,7 +31,6 @@ var $eventDescription = $("#event-description");
 var $submitBtn = $("#submit");
 var $eventList = $("#event-list");
 
-
 // The API object contains methods for each kind of request we'll make
 var API = {
   saveEvent: function(example) {
@@ -47,6 +47,13 @@ var API = {
     return $.ajax({
       url: "api/events",
       type: "GET"
+    });
+  },
+  //............................................
+  editEvent: function(id) {
+    return $.ajax({
+      url: "api/events/" + id,
+      type: "PUT"
     });
   },
   deleteEvent: function(id) {
@@ -77,9 +84,9 @@ var refreshEvents = function() {
       var $button = $("<button>")
         .addClass("btn btn-danger float-right delete mx-1")
         .text(" Delete");
-
+      //..........................................................
       var $ebutton = $("<button>")
-        .addClass("btn btn-primary float-right mx-1")
+        .addClass("btn btn-primary float-right edit mx-1")
         .text(" Edit");
 
       var $trashcan = $("<i>").addClass("fas fa-trash-alt");
@@ -87,7 +94,7 @@ var refreshEvents = function() {
 
       $button.prepend($trashcan);
       $li.append($button);
-
+      //............................................................
       $ebutton.prepend($editpencil);
       $li.append($ebutton);
 
@@ -130,9 +137,19 @@ var handleFormSubmit = function(event) {
   $eventCategory.val("");
   $eventLocation.val("");
   $eventDescription.val("");
-
 };
+//.......................................................
+// edit button
+var handleEditBtnClick = function() {
+  console.log("this is hitting on click");
+  var idToEdit = $(this)
+    .parent()
+    .attr("data-id");
 
+  API.editEvent(idToEdit).then(function() {
+    refreshEvents();
+  });
+};
 // handleDeleteBtnClick is called when an example's delete button is clicked
 // Remove the example from the db and refresh the list
 var handleDeleteBtnClick = function() {
@@ -152,5 +169,6 @@ var handleDeleteBtnClick = function() {
 // Add event listeners to the submit and delete buttons
 $submitBtn.on("click", handleFormSubmit);
 $eventList.on("click", ".delete", handleDeleteBtnClick);
-
+//..........................................................................
+$eventList.on("click", ".edit", handleEditBtnClick);
 refreshEvents();

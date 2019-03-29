@@ -39,6 +39,26 @@ module.exports = function(app) {
       res.json(dbInvites);
     });
   });
+//..................................................................................
+//edit button route
+app.get("api/events/:id", function(req, res) {
+
+  console.log("this api route is hitting");
+  console.log('req', req);
+  db.Event.update(
+    {
+      text: req.body.text,
+      complete: req.body.complete
+    },
+    {
+      where: {
+        id: req.body.id
+      }
+    }
+  ).then(function(dbEvents) {
+    res.json(dbEvents);
+  });
+});
 
   // Delete an example by id
   app.delete("/api/events/:id", function(req, res) {
@@ -68,7 +88,7 @@ module.exports = function(app) {
         id: req.params.id
       }
     }).then(function(rowsUpdated) {
-      res.redirect("../../../event"+req.params.eid);
+      res.redirect("../../../event/"+req.params.eid);
     })
     
       
@@ -81,7 +101,7 @@ module.exports = function(app) {
     //console.log(inviteEvent)
     
     console.log(req.body);
-    var output = `
+    var output =  `
       <p>You have a new event invite</p>
         <ul>
           <li>Event: ${req.body.eventTitle}</li>
