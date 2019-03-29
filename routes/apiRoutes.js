@@ -77,7 +77,8 @@ module.exports = function(app) {
   app.post("/invite/send", function(req, res) {
 
     db.Invite.create({email: req.body.email,EventId: req.body.eventId}).then(function(inviteEvent) {
-        
+    
+
     console.log(req.body);
     var output = `
       <p>You have a new event invite</p>
@@ -119,11 +120,6 @@ module.exports = function(app) {
           console.log(info);
     
           res.redirect("/event/"+req.body.eventId);
-
-          // res.render('contact',{
-          //   msg: `Email has been sent thank you!!`
-          // });
-
 
      });
 
