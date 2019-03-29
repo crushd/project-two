@@ -13,11 +13,17 @@ module.exports = function(app) {
   });
 
   // Get event by eventId
+<<<<<<< HEAD
   app.get("/api/events/:id", function(req, res) {
     db.Event.findOne({
       where: {id: req.params.id}
     },
     {
+=======
+  app.get("/api/event/:id", function(req, res) {
+    db.Event.findOne({
+      where: {id: req.params.id},
+>>>>>>> master
       include: [db.Invite]
     }).then(function(dbEvents) {
       res.json(dbEvents);
