@@ -1,9 +1,4 @@
 
-
-// var moment = require("moment");
-// let startdate_value = new Date().toISOString().substr(0, 10);
-// document.querySelector("#event-startdate").value = startdate_value;
-// console.log(startdate_value);
 var sd_date = moment().format("YYYY-MM-DD");
 var sd_time = "20:00";
 var ed_time = "22:00";
@@ -54,7 +49,7 @@ var API = {
       url: "api/event/" + id,
       type: "GET"
     })
-  }
+  },
   deleteEvent: function(id) {
     return $.ajax({
       url: "api/events/" + id,
