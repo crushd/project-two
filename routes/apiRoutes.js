@@ -1,6 +1,6 @@
 var db = require("../models");
 var nodemailer = require('nodemailer');
-var emailTemp = require("../views/emailTemp.handlebars");
+//var emailTemp = require("../views/emailTemp.handlebars");
 
 module.exports = function(app) {
   // Get all examples
