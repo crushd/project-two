@@ -12,6 +12,18 @@ module.exports = function(app) {
     });
   });
 
+  // Get event by eventId
+  app.get("/api/events/:id", function(req, res) {
+    db.Event.findOne({
+      where: {id: req.params.id}
+    },
+    {
+      include: [db.Invite]
+    }).then(function(dbEvents) {
+      res.json(dbEvents);
+    });
+  });
+
   // Create a new example
   app.post("/api/events", function(req, res) {
     db.Event.create(req.body).then(function(dbEvents) {
@@ -29,6 +41,26 @@ module.exports = function(app) {
       res.json(dbInvites);
     });
   });
+//..................................................................................
+//edit button route
+app.get("api/events/:id", function(req, res) {
+
+  console.log("this api route is hitting");
+  console.log('req', req);
+  db.Event.update(
+    {
+      text: req.body.text,
+      complete: req.body.complete
+    },
+    {
+      where: {
+        id: req.body.id
+      }
+    }
+  ).then(function(dbEvents) {
+    res.json(dbEvents);
+  });
+});
 
   // Delete an example by id
   app.delete("/api/events/:id", function(req, res) {
