@@ -1,9 +1,4 @@
 
-
-// var moment = require("moment");
-// let startdate_value = new Date().toISOString().substr(0, 10);
-// document.querySelector("#event-startdate").value = startdate_value;
-// console.log(startdate_value);
 var sd_date = moment().format("YYYY-MM-DD");
 var sd_time = "20:00";
 var ed_time = "22:00";
@@ -15,9 +10,6 @@ var thisRSVPDate = moment(sd_date+' '+sd_time).format("YYYY-MM-DDThh:mm");
 document.querySelector("#event-startdate").value = thisStartDate;
 document.querySelector("#event-enddate").value = thisEndDate;
 document.querySelector("#event-rsvpdate").value = thisRSVPDate;
-
-//console.log(thisStartDate);
-//console.log(thisEndDate);
 
 // Get references to page elements
 var $eventName = $("#event-name");
@@ -62,6 +54,12 @@ var API = {
     });
   }
 };
+
+var getEventDetails = function() {
+  API.getOneEvent(2).then(function(thisEventDetails) {
+    console.log(thisEventDetails);
+  })
+}
 
 // refreshExamples gets new examples from the db and repopulates the list
 var refreshEvents = function() {
