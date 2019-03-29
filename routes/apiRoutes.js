@@ -13,17 +13,9 @@ module.exports = function(app) {
   });
 
   // Get event by eventId
-<<<<<<< HEAD
-  app.get("/api/events/:id", function(req, res) {
-    db.Event.findOne({
-      where: {id: req.params.id}
-    },
-    {
-=======
   app.get("/api/event/:id", function(req, res) {
     db.Event.findOne({
       where: {id: req.params.id},
->>>>>>> master
       include: [db.Invite]
     }).then(function(dbEvents) {
       res.json(dbEvents);
@@ -96,7 +88,7 @@ app.get("api/events/:id", function(req, res) {
         id: req.params.id
       }
     }).then(function(rowsUpdated) {
-      res.redirect("../../../event"+req.params.eid);
+      res.redirect("../../../event/"+req.params.eid);
     })
     
       
@@ -109,7 +101,7 @@ app.get("api/events/:id", function(req, res) {
     //console.log(inviteEvent)
     
     console.log(req.body);
-    var output = `
+    var output =  `
       <p>You have a new event invite</p>
         <ul>
           <li>Event: ${req.body.eventTitle}</li>
