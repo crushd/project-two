@@ -11,9 +11,6 @@ document.querySelector("#event-startdate").value = thisStartDate;
 document.querySelector("#event-enddate").value = thisEndDate;
 document.querySelector("#event-rsvpdate").value = thisRSVPDate;
 
-//console.log(thisStartDate);
-//console.log(thisEndDate);
-
 // Get references to page elements
 var $eventName = $("#event-name");
 var $eventStartDate = $("#event-startdate");
@@ -24,7 +21,6 @@ var $eventLocation = $("#event-location");
 var $eventDescription = $("#event-description");
 var $submitBtn = $("#submit");
 var $eventList = $("#event-list");
-
 
 // The API object contains methods for each kind of request we'll make
 var API = {
@@ -58,18 +54,11 @@ var API = {
   }
 };
 
-var getThisEventDetails = function() {
-
-  API.getOneEvent(2).then(function(data) {
-    console.log(data);
-  })
-
-};
 
 // refreshExamples gets new examples from the db and repopulates the list
 var refreshEvents = function() {
   API.getEvents().then(function(data) {
-    console.log("Refreshing events...");
+    //console.log("Refreshing events...");
 
     var $events = data.map(function(thisEvent) {
       var $a = $("<a>")
@@ -87,18 +76,18 @@ var refreshEvents = function() {
         .addClass("btn btn-danger float-right delete mx-1")
         .text(" Delete");
 
-      var $ebutton = $("<button>")
-        .addClass("btn btn-primary float-right mx-1")
-        .text(" Edit");
+      // var $ebutton = $("<button>")
+      //   .addClass("btn btn-primary float-right mx-1")
+      //   .text(" Edit");
 
       var $trashcan = $("<i>").addClass("fas fa-trash-alt");
-      var $editpencil = $("<i>").addClass("fas fa-pen");
+      // var $editpencil = $("<i>").addClass("fas fa-pen");
 
       $button.prepend($trashcan);
       $li.append($button);
 
-      $ebutton.prepend($editpencil);
-      $li.append($ebutton);
+      // $ebutton.prepend($editpencil);
+      // $li.append($ebutton);
 
       return $li;
     });

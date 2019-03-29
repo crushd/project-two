@@ -6,10 +6,6 @@
           
           <h4 class="card-title text-center">{{event.title}} Details</h4>
 
-            {{!-- <script>
-              console.log("This event date: " + event.startdate);
-            </script> --}}
-
             <div class="row">
               <div class="col-4 text-center"><p><strong>Start Date</strong>:<br>{{event.startdate}}</p></div>
               <div class="col-4 text-center"><p><strong>End Date</strong>:<br>{{event.enddate}}</p></div>
@@ -54,10 +50,13 @@
               </div>
             </div>
             
-            <script>
+            {{!-- <script>
               var link = document.getElementById('email');
-              var nodemailer = require('nodemailer');
-            </script>
+              //var nodemailer = require('nodemailer');
+            </script> --}}
+
+            <script src="../js/eventdetails.js"></script>
+            <script src="../js/index.js"></script>
         
         </div>
       </div>
