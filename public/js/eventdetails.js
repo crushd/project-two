@@ -3,4 +3,4 @@
 // console.log("This event Id: " + eventId);
 // const url = require('url');
 
-console.log(thisGuestList);
+// console.log(thisGuestList);
