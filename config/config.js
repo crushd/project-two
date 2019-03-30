@@ -21,6 +21,7 @@ module.exports = {
     password: "qylkfq2d1f1uvetp",
     database: "u2elzcxk459slca9",
     host: "bmsyhziszmhf61g1.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
-    dialect: "JAWSDB_URL"
+    dialect: "mysql",
+    use_env_variable: "JAWSDB_URL"
   }
 };
