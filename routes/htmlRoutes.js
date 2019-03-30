@@ -51,7 +51,9 @@ module.exports = function(app) {
 
     db.Event.findOne({ where: { id: req.params.id }, include: [db.Invite] }).then(function(dbEvents) {
       //console.log(dbEvents.Invites[0]);
-      
+      console.log(dbEvents.Invites);
+
+      thisid = dbEvents.id;
       thistitle = dbEvents.title;
       thisstartdate = moment(dbEvents.startdate).format("ddd, MM/DD/YYYY h:mm a");
       thisenddate = moment(dbEvents.enddate).format("ddd, MM/DD/YYYY h:mm a");
@@ -60,7 +62,9 @@ module.exports = function(app) {
       thisguestlist = dbEvents.Invites;
 
       res.render("eventdetails", {
+        eventID : thisid,
         eventTitle : thistitle,
+        eventCategory : dbEvents.category,
         eventStartDate : thisstartdate,
         eventEndDate : thisenddate,
         eventRsvpDate : thisrsvpdate,
