@@ -1,5 +1,5 @@
 var db = require("../models");
-//var moment = require("moment");
+var moment = require("moment");
 
 module.exports = function(app) {
   // Load index page
@@ -24,13 +24,50 @@ module.exports = function(app) {
   });
 
   // Load example page and pass in an example by id
-  app.get("/event/:id", function(req, res) {
+  app.get("/edit/:id", function(req, res) {
+      
+      res.render("editevent");
 
-    db.Event.findOne({ where: { id: req.params.id } }).then(function(dbEvents) {
-      console.log(dbEvents);
-      res.render("eventdetails", {
+  });
+
+  app.get("/edit/:id"), function(req, res) {
+
+    db.Event.findOne({ where: { id: req.params.id }, include: [db.Invite] }).then(function(dbEvents) {
+      //console.log(dbEvents.Invites[0]);
+      
+
+      res.render("editevent", {
         event: dbEvents
       });
+
+    });
+
+  }
+
+  // Load example page and pass in an example by id
+  app.get("/event/:id", function(req, res) {
+
+    // console.log(req.body);
+
+    db.Event.findOne({ where: { id: req.params.id }, include: [db.Invite] }).then(function(dbEvents) {
+      //console.log(dbEvents.Invites[0]);
+      
+      thistitle = dbEvents.title;
+      thisstartdate = moment(dbEvents.startdate).format("ddd, MM/DD/YYYY h:mm a");
+      thisenddate = moment(dbEvents.enddate).format("ddd, MM/DD/YYYY h:mm a");
+      thisrsvpdate = moment(dbEvents.rsvpdate).format("ddd, MM/DD/YYYY h:mm a");
+      thisdescription = dbEvents.description;
+      thisguestlist = dbEvents.Invites;
+
+      res.render("eventdetails", {
+        eventTitle : thistitle,
+        eventStartDate : thisstartdate,
+        eventEndDate : thisenddate,
+        eventRsvpDate : thisrsvpdate,
+        eventDescription: thisdescription,
+        eventGuestList : thisguestlist
+      });
+
     });
   });
 
