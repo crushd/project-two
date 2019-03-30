@@ -1,8 +1,17 @@
-*{
-  box-sizing: border-box;
+html {
+  width: 100%;
+  height: 100%;
 }
 body{
-  background:#92bde7;
+  /* background:#92bde7; */
+  background:linear-gradient(
+    rgba(146, 189, 231, 0.75), 
+    rgba(146,189,231, 0.75)
+  ) fixed center center, url('../images/background.png') fixed center center ;
+  background-size:     cover;
+  background-repeat:   no-repeat;
+  background-position: center center;
+  background-color:rgba(0, 0, 0, 0.5);
   color:#485e74;
   line-height:1.6;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
