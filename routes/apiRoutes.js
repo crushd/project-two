@@ -68,7 +68,7 @@ module.exports = function(app) {
         id: req.params.id
       }
     }).then(function(rowsUpdated) {
-      res.redirect("../../../event"+req.params.eid);
+      res.redirect("../../../event/"+req.params.eid);
     })
     
       
@@ -91,7 +91,7 @@ module.exports = function(app) {
           <li>Message: ${req.body.message}</li>
 
           <li><a href="http://localhost:8080/event/${req.body.eventId}">View Event Details</a></li>
-          <li><a href="http://localhost:8080/invite/${inviteEvent.id}/1/${req.body.eventId}">Yes, I will attend</a> | <a href="http://localhost:8080/invite/${inviteEvent.id}/2/${req.body.eventId}">No, I will not attend</a> | <a href="http://localhost:8080/invite/${inviteEvent.id}/3/${req.body.eventId}">I might attend</a></li>
+          <li><a href="https://server-spies.herokuapp.com/invite/${inviteEvent.id}/1/${req.body.eventId}">Yes, I will attend</a> | <a href="https://server-spies.herokuapp.com/invite/${inviteEvent.id}/2/${req.body.eventId}">No, I will not attend</a> | <a href="https://server-spies.herokuapp.com/invite/${inviteEvent.id}/3/${req.body.eventId}">I might attend</a></li>
         </ul>
     `
 
