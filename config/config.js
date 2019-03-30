@@ -17,7 +17,10 @@ module.exports = {
     logging: false
   },
   production: {
-    use_env_variable: process.env.JAWS_DB_URL,
-    dialect: "mysql"
+    username: "nsfcr8r8j922jdmb",
+    password: "qylkfq2d1f1uvetp",
+    database: "u2elzcxk459slca9",
+    host: "bmsyhziszmhf61g1.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
+    dialect: "JAWSDB_URL"
   }
 };
