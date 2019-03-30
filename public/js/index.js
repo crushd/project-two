@@ -1,11 +1,12 @@
+/* eslint-disable camelcase */
 
 var sd_date = moment().format("YYYY-MM-DD");
 var sd_time = "20:00";
 var ed_time = "22:00";
 
-var thisStartDate = moment(sd_date+' '+sd_time).format("YYYY-MM-DDThh:mm");
-var thisEndDate = moment(sd_date+' '+ed_time).format("YYYY-MM-DDThh:mm");
-var thisRSVPDate = moment(sd_date+' '+sd_time).format("YYYY-MM-DDThh:mm");
+var thisStartDate = moment(sd_date + " " + sd_time).format("YYYY-MM-DDThh:mm");
+var thisEndDate = moment(sd_date + " " + ed_time).format("YYYY-MM-DDThh:mm");
+var thisRSVPDate = moment(sd_date + " " + sd_time).format("YYYY-MM-DDThh:mm");
 
 document.querySelector("#event-startdate").value = thisStartDate;
 document.querySelector("#event-enddate").value = thisEndDate;
@@ -44,7 +45,7 @@ var API = {
     return $.ajax({
       url: "api/event/" + id,
       type: "GET"
-    })
+    });
   },
   deleteEvent: function(id) {
     return $.ajax({
@@ -53,7 +54,6 @@ var API = {
     });
   }
 };
-
 
 // refreshExamples gets new examples from the db and repopulates the list
 var refreshEvents = function() {
@@ -128,7 +128,6 @@ var handleFormSubmit = function(event) {
   $eventCategory.val("");
   $eventLocation.val("");
   $eventDescription.val("");
-
 };
 
 // handleDeleteBtnClick is called when an example's delete button is clicked
