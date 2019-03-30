@@ -23,55 +23,49 @@ module.exports = function(app) {
     });
   });
 
-  // Load example page and pass in an example by id
-  app.get("/edit/:id", function(req, res) {
-      
-      res.render("editevent");
-
-  });
-
-  app.get("/edit/:id"), function(req, res) {
-
-    db.Event.findOne({ where: { id: req.params.id }, include: [db.Invite] }).then(function(dbEvents) {
-      //console.log(dbEvents.Invites[0]);
-      
-
-      res.render("editevent", {
-        event: dbEvents
+  app.get("/edit/:id"),
+    function(req, res) {
+      db.Event.findOne({
+        where: { id: req.params.id },
+        include: [db.Invite]
+      }).then(function(dbEditEvents) {
+        res.render("editevent", {
+          event: dbEditEvents
+        });
       });
-
-    });
-
-  }
+    };
 
   // Load example page and pass in an example by id
   app.get("/event/:id", function(req, res) {
-
     // console.log(req.body);
 
-    db.Event.findOne({ where: { id: req.params.id }, include: [db.Invite] }).then(function(dbEvents) {
+    db.Event.findOne({
+      where: { id: req.params.id },
+      include: [db.Invite]
+    }).then(function(dbEvents) {
       //console.log(dbEvents.Invites[0]);
       console.log(dbEvents.Invites);
 
       thisid = dbEvents.id;
       thistitle = dbEvents.title;
-      thisstartdate = moment(dbEvents.startdate).format("ddd, MM/DD/YYYY h:mm a");
+      thisstartdate = moment(dbEvents.startdate).format(
+        "ddd, MM/DD/YYYY h:mm a"
+      );
       thisenddate = moment(dbEvents.enddate).format("ddd, MM/DD/YYYY h:mm a");
       thisrsvpdate = moment(dbEvents.rsvpdate).format("ddd, MM/DD/YYYY h:mm a");
       thisdescription = dbEvents.description;
       thisguestlist = dbEvents.Invites;
 
       res.render("eventdetails", {
-        eventID : thisid,
-        eventTitle : thistitle,
-        eventCategory : dbEvents.category,
-        eventStartDate : thisstartdate,
-        eventEndDate : thisenddate,
-        eventRsvpDate : thisrsvpdate,
+        eventID: thisid,
+        eventTitle: thistitle,
+        eventCategory: dbEvents.category,
+        eventStartDate: thisstartdate,
+        eventEndDate: thisenddate,
+        eventRsvpDate: thisrsvpdate,
         eventDescription: thisdescription,
-        eventGuestList : thisguestlist
+        eventGuestList: thisguestlist
       });
-
     });
   });
 

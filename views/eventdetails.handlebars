@@ -1,5 +1,7 @@
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="../js/eventdetails.js"></script>
+
 
 <div class="container">
   <div class="row">
@@ -40,38 +42,21 @@
                         {{#each eventGuestList}}
                         <li data-id="{{this.email}}" class="list-group-item d-flex justify-content-between align-items-center">
                           <a href="mailto:{{this.email}}">{{this.email}}</a>
-                          <span class="badge badge-success">{{this.status}}</span>
+                          {{!-- {{#if this.status "0"}}
+                          <span class="badge badge-secondary">No Response</span>
+                          {{else}}
+                          <span class="badge badge-primary-outline">{{this.status}}</span>
+                          {{/if}} --}}
                           {{!-- <button class="btn btn-danger float-right delete"> x</button> --}}
+                          <span class="badge badge-primary-outline">{{this.status}}</span>
                         </li>
                         {{/each}}
                     </ul>
                   </div>
-
-                  {{!-- <ul class="list-group">
-                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                      codyrush@gmail.com
-                    </li>
-                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                      jeffreyyoung780@yahoo.com
-                      <span class="badge badge-secondary">No Response</span>
-                    </li>
-                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                      ericlz25412@gmail.com
-                      <span class="badge badge-danger">No</span>
-                    </li>
-                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                      michaelbarela17@gmail.com
-                      <span class="badge badge-warning">Maybe</span>
-                    </li> --}}
                   </ul>
                 </div>
               </div>
             </div>
-            
-            {{!-- <script>
-              var link = document.getElementById('email');
-              //var nodemailer = require('nodemailer');
-            </script> --}}
 
             <script src="../js/index.js"></script>
         
