@@ -1,14 +1,42 @@
-
-<div class="container">
-  <div class="row">
-    <div class="col-8 offset-2">
-      <div class="card mt-4">
-        <div class="card-body">
-
-        <div>Hello World.</div>
-
+<div class="card dropshadow">
+            <div class="card-body">
+              <form class="clearfix mb-4" action="POST">
+                <div class="form-group">
+                  <label for="event-name">Event Name</label>
+                  <input type="text" id="event-name" class="form-control" aria-describedby="event-name" value="{{event.title}}">
+                </div>
+                <div class="row">
+                  <div class="form-group col-4">
+                    <label for="event-startdate">Start Date/Time</label>
+                    <input type="datetime-local" id="event-startdate" class="form-control" aria-describedby="event-startdate" value="{{event.startdate}}">
+                  </div>
+                  <div class="form-group col-4">
+                    <label for="event-enddate">End Date/Time</label>
+                    <input type="datetime-local" id="event-enddate" class="form-control" aria-describedby="event-enddate" value="{{event.enddate}}">
+                  </div>
+                  <div class="form-group col-4">
+                    <label for="event-rsvpdate">RSVP Date/Time</label>
+                    <input type="datetime-local" id="event-rsvpdate" class="form-control" aria-describedby="event-rsvpdate" value="{{event.rsvpdate}}">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="event-category">Category</label>
+                  <select id="event-category" class="form-control">
+                    <option value="{{event.category}}">Select Category</option>
+                    <option value="meetup">Meet Up</option>
+                    <option value="party">Party</option>
+                    <option value="other">Other</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="event-location">Location</label>
+                  <input type="text" id="event-location" class="form-control" aria-describedby="event-location" value= "{{event.location}}">
+                </div>
+                <div class="form-group">
+                  <label for="event-description">Description</label>
+                  <textarea class="form-control" id="event-description" aria-describedby="event-description" value="{{event.description}}"></textarea>
+                </div>
+                <button id="submit" class="btn btn-primary float-right">Update Event</button>
+              </form>
+          </div>
         </div>
-      </div>
-    </div>
-  </div>
-</div>
