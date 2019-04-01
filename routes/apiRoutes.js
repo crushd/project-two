@@ -86,9 +86,14 @@ module.exports = function(app) {
         <ul>
           <li>Event: ${req.body.eventTitle}</li>
           <li>From: ${req.body.name}</li>
+          <li>Start: ${req.body.eventStartDate}</li>
+          <li>End: ${req.body.eventEndDate}</li>
+
           <li>Email: ${req.body.email}</li>
           <li>Phone Number: ${req.body.phone}</li>
           <li>Message: ${req.body.message}</li>
+
+          <p>Please RSVP by ${req.body.eventRsvpDate}</p>
 
           <li><a href="http://localhost:8080/event/${req.body.eventId}">View Event Details</a></li>
           <li><a href="https://server-spies.herokuapp.com/invite/${inviteEvent.id}/1/${req.body.eventId}">Yes, I will attend</a> | <a href="https://server-spies.herokuapp.com/invite/${inviteEvent.id}/0/${req.body.eventId}">No, I will not attend</a>
