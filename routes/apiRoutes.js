@@ -86,6 +86,7 @@ module.exports = function(app) {
         <ul>
           <li>Event: ${req.body.eventTitle}</li>
           <li>From: ${req.body.name}</li>
+          <li>Start: ${req.body.eventStartDate}</li>
           <li>Email: ${req.body.email}</li>
           <li>Phone Number: ${req.body.phone}</li>
           <li>Message: ${req.body.message}</li>
