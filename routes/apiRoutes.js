@@ -82,7 +82,7 @@ module.exports = function(app) {
     
     console.log(req.body);
     var output = `
-      <p>You have a new event invite</p>
+      <p>You have been invited to the following event:</p>
         <ul>
           <li>Event: ${req.body.eventTitle}</li>
           <li>From: ${req.body.name}</li>
@@ -91,7 +91,7 @@ module.exports = function(app) {
           <li>Message: ${req.body.message}</li>
 
           <li><a href="http://localhost:8080/event/${req.body.eventId}">View Event Details</a></li>
-          <li><a href="https://server-spies.herokuapp.com/invite/${inviteEvent.id}/1/${req.body.eventId}">Yes, I will attend</a> | <a href="https://server-spies.herokuapp.com/invite/${inviteEvent.id}/2/${req.body.eventId}">No, I will not attend</a> | <a href="https://server-spies.herokuapp.com/invite/${inviteEvent.id}/3/${req.body.eventId}">I might attend</a></li>
+          <li><a href="https://server-spies.herokuapp.com/invite/${inviteEvent.id}/1/${req.body.eventId}">Yes, I will attend</a> | <a href="https://server-spies.herokuapp.com/invite/${inviteEvent.id}/0/${req.body.eventId}">No, I will not attend</a>
         </ul>
     `
 
