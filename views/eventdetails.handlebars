@@ -42,12 +42,11 @@
                         {{#each eventGuestList}}
                         <li data-id="{{this.email}}" class="list-group-item d-flex justify-content-between align-items-center">
                           <a href="mailto:{{this.email}}">{{this.email}}</a>
-                          {{!-- {{#if this.status "0"}}
-                          <span class="badge badge-secondary">No Response</span>
+                          {{#if status}}
+                          <span class="badge badge-success">Yes</span>
                           {{else}}
-                          <span class="badge badge-primary-outline">{{this.status}}</span>
-                          {{/if}} --}}
-                          {{!-- <button class="btn btn-danger float-right delete"> x</button> --}}
+                          <span class="badge badge-danger">No</span>
+                          {{/if}}
                           <span class="badge badge-primary">{{this.status}}</span>
                         </li>
                         {{/each}}
