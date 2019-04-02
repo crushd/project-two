@@ -23,17 +23,17 @@ module.exports = function(app) {
     });
   });
 
-  app.get("/edit/:id",
-    function(req, res) {
-      db.Event.findOne({
-        where: { id: req.params.id },
-        include: [db.Invite]
-      }).then(function(dbEvents) {
-        res.render("editevent", {
-          event: dbEvents
-        });
-      });
-  });
+  // app.get("/edit/:id",
+  //   function(req, res) {
+  //     db.Event.findOne({
+  //       where: { id: req.params.id },
+  //       include: [db.Invite]
+  //     }).then(function(dbEvents) {
+  //       res.render("editevent", {
+  //         event: dbEvents
+  //       });
+  //     });
+  // });
 
   // Load example page and pass in an example by id
   app.get("/event/:id", function(req, res) {
