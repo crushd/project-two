@@ -23,16 +23,17 @@ module.exports = function(app) {
     });
   });
 
-  app.get("/edit/:id"), function(req, res) {
-    db.Event.findOne({
-      where: { id: req.params.id },
-      include: [db.Invite]
-    }).then(function(dbEvents) {
-      res.render("editevent", {
-        event: dbEvents
+  app.get("/edit/:id",
+    function(req, res) {
+      db.Event.findOne({
+        where: { id: req.params.id },
+        include: [db.Invite]
+      }).then(function(dbEvents) {
+        res.render("editevent", {
+          event: dbEvents
+        });
       });
-    });
-  };
+    };
 
   // Load example page and pass in an example by id
   app.get("/event/:id", function(req, res) {
@@ -47,7 +48,9 @@ module.exports = function(app) {
 
       thisid = dbEvents.id;
       thistitle = dbEvents.title;
-      thisstartdate = moment(dbEvents.startdate).format("ddd, MM/DD/YYYY h:mm a");
+      thisstartdate = moment(dbEvents.startdate).format(
+        "ddd, MM/DD/YYYY h:mm a"
+      );
       thisenddate = moment(dbEvents.enddate).format("ddd, MM/DD/YYYY h:mm a");
       thisrsvpdate = moment(dbEvents.rsvpdate).format("ddd, MM/DD/YYYY h:mm a");
       thisdescription = dbEvents.description;
