@@ -27,9 +27,9 @@ module.exports = function(app) {
     db.Event.findOne({
       where: { id: req.params.id },
       include: [db.Invite]
-    }).then(function(dbEditEvents) {
+    }).then(function(dbEvents) {
       res.render("editevent", {
-        event: dbEditEvents
+        event: dbEvents
       });
     });
   };
