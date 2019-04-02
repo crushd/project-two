@@ -33,7 +33,7 @@ module.exports = function(app) {
           event: dbEvents
         });
       });
-    };
+  });
 
   // Load example page and pass in an example by id
   app.get("/event/:id", function(req, res) {
